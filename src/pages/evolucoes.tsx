@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import CardSection from '../components/CardSection';
 
+type Pokemon = {
+  sprites:{
+    front_default: string
+  }
+}
+
 const Evolucoes = () => {
   const router = useRouter();
   const { evolucao } = router.query;
-  const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonData, setPokemonData] = useState<Pokemon | null>(null);
 
   useEffect(() => {
     if (evolucao) {
